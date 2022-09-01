@@ -363,15 +363,17 @@ bottom: 0;
     width: 44px;
     height: 44px;
     }
+   
 .social-links-link {
     display: flex;
     justify-content: center;
     align-items:center;
     width: 100%;
     height: 100%;
-    fill: var(--icons-color);
+  
     background-color: var(--color-white);
     border-radius: 50%;
+    fill: var(--icons-color);
 
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -560,6 +562,8 @@ bottom: 0;
 .sample-card {
     text-decoration: none;
     color: currentColor;
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    
 }
 
 .sample-card:hover,
@@ -571,8 +575,15 @@ bottom: 0;
 .project-thumb {
     position: relative;
     overflow: hidden;
+
+    
 }
 
+.img-description {
+    color: var(--color-white);
+    font-size: 18px;
+    line-height: 1.56;
+}
 .img-overlay {
     position: absolute;
     top: 0;
@@ -581,20 +592,20 @@ bottom: 0;
     height: 100%;
     padding: 63px 24px;
     background-color: rgba(33, 150, 243, 0.9);
-   
+    overflow: auto;
+
+    z-index:-1;
+  
     transform: translateY(100%);
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), z-index 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-.sample-card:hover .img-overlay {
+}
+.sample-card:hover .img-overlay,
+.sample-card:focus .img-overlay {
     transform: translateY(0);
+    z-index: 1;
+   
 }
-.img-description {
-    color: var(--color-white);
-    font-size: 18px;
-    line-height: 1.56;
-}
-
 
 
 /* ================MODAL============= */
@@ -605,6 +616,7 @@ bottom: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
+    z-index: 100;
 
     opacity: 1;
     transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -635,7 +647,9 @@ bottom: 0;
     border-radius: 4px;
 }
 .close-button {
-    margin-left: auto;
+    position: absolute;
+    top: 8px;
+    right: 8px;
 
     display: flex;
     justify-content: center;
@@ -645,5 +659,5 @@ bottom: 0;
     width: 30px;
     border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 0.1);
-    background-color: var(--color-white);
+    background-color: transparent;
 }
